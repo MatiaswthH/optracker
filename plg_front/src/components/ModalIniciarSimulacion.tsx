@@ -33,13 +33,12 @@ const ModalIniciarSimulacion: React.FC<ModalIniciarSimulacionProps> = ({
     const [pedidosFile, setPedidosFile] = useState<File | null>(null);
 
     // Initialize hooks
-    const { loading: loadingPedidos, error: errorPedidos, success: successPedidos, enviarPedidos } = useEnviarPedidos();
-    const { loading: loadingMantenimientos, error: errorMantenimientos, success: successMantenimientos, enviarMantenimientos } = useEnviarMantenimientos();
-    const { loading: loadingBloqueos, error: errorBloqueos, success: successBloqueos, enviarBloqueos } = useEnviarBloqueos();
+    const { loading: loadingPedidos, error: errorPedidos, enviarPedidos } = useEnviarPedidos();
+    const { loading: loadingMantenimientos, error: errorMantenimientos, enviarMantenimientos } = useEnviarMantenimientos();
+    const { loading: loadingBloqueos, error: errorBloqueos, enviarBloqueos } = useEnviarBloqueos();
 
     const isLoading = loadingPedidos || loadingMantenimientos || loadingBloqueos;
     const hasErrors = errorPedidos || errorMantenimientos || errorBloqueos;
-    const allSuccess = successPedidos && successMantenimientos && successBloqueos;
 
     const handleAceptar = async () => {
         try {

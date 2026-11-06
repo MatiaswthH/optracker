@@ -1,28 +1,28 @@
-import React, { createContext, useState, useCallback, useEffect, useContext } from 'react';
+import { createContext, useState, useCallback, useEffect, useContext } from 'react';
 import { useSimulacionSemanal } from '../hooks/useSimulacionSemanal';
 import { useSimulacionDiaria } from '../hooks/useSimulacionDiaria';
 import { useSimulationTracker } from '../hooks/useSimulationTracker';
 import stompClient from '../stomp-client';
 
-const SimulacionContext = createContext(null);
+const SimulacionContext = createContext<any>(null);
 
 export const useSimulacion = () => useContext(SimulacionContext);
 
-export const SimulacionProvider = ({ children }) => {
+export const SimulacionProvider = ({ children }: any) => {
     const [estadoSimulacion, setEstadoSimulacion] = useState(0); // 0: Sin Iniciar, 1: Corriendo, 2: Pausado
     const [fechaInicio, setFechaInicio] = useState("");
-    const [snapshotQueue, setSnapshotQueue] = useState([]);
-    const [currentSnapshot, setCurrentSnapshot] = useState(null);
-    const [snapshotsEventos, setSnapshotsEventos] = useState([]);
-    const [resultado, setResultado] = useState(null);
+    const [snapshotQueue, setSnapshotQueue] = useState<any[]>([]);
+    const [currentSnapshot, setCurrentSnapshot] = useState<any>(null);
+    const [snapshotsEventos, setSnapshotsEventos] = useState<any[]>([]);
+    const [resultado, setResultado] = useState<any>(null);
     const [simulacionSpeed, setSimulacionSpeed] = useState(1);
     const [tipoSimulacion, setTipoSimulacion] = useState("Semanal");
 
-    const onSnapshot = useCallback((snapshot) => {
+    const onSnapshot = useCallback((snapshot: any) => {
         setSnapshotQueue((prev) => [...prev, snapshot]);
     }, []);
 
-    const onResultado = useCallback((res) => {
+    const onResultado = useCallback((res: any) => {
         setResultado(res);
     }, []);
 
@@ -58,7 +58,7 @@ export const SimulacionProvider = ({ children }) => {
                             setSnapshotsEventos((prev) =>
                                 [
                                     ...prev,
-                                    ...nextSnapshot.eventos.map((evento) => ({
+                                    ...nextSnapshot.eventos.map((evento: any) => ({
                                         evento,
                                         fechaHoraActual: nextSnapshot.fechaHoraActual,
                                     })),

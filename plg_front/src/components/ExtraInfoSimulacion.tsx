@@ -24,10 +24,9 @@ import {
 import ScheduleSendIcon from "@mui/icons-material/ScheduleSend";
 import FileUploadIcon from "@mui/icons-material/FileUpload";
 import AddIcon from "@mui/icons-material/Add";
-import ModalPedidosDiarios from "./ModalPedidosDiarios";
 import { ModalRegistroPedidoIndividual } from "./ModalRegistroPedidoIndividual";
 
-const ExtraInfoSimulacion = ({ snapshot }) => {
+const ExtraInfoSimulacion = ({ snapshot }: any) => {
   const [value, setValue] = useState("Camiones");
 
   //Envio de averias
@@ -236,7 +235,7 @@ const ExtraInfoSimulacion = ({ snapshot }) => {
         const camion = row;
         if (!camion.paradas || camion.paradas.length === 0)
           return "Sin ruta asignada.";
-        return camion.paradas.map((p) => `(${p.x},${p.y})`).join(", ");
+        return camion.paradas.map((p: any) => `(${p.x},${p.y})`).join(", ");
       },
     },
   ];
@@ -310,7 +309,7 @@ const ExtraInfoSimulacion = ({ snapshot }) => {
           return "Sin tramo asignado.";
         return bloqueo.nodosIntermedios
           .slice(1)
-          .map((b) => `(${b.x},${b.y})`)
+          .map((b: any) => `(${b.x},${b.y})`)
           .join(", ");
       },
     },
@@ -380,7 +379,7 @@ const ExtraInfoSimulacion = ({ snapshot }) => {
     <Box sx={{ overflow: "hidden", height: "100%", paddingBottom: "10px" }}>
       <Tabs
         value={value}
-        onChange={(e, newValue) => setValue(newValue)}
+        onChange={(_e, newValue) => setValue(newValue)}
         variant="scrollable"
         scrollButtons="auto"
         sx={{ overflow: "auto" }}
@@ -400,7 +399,7 @@ const ExtraInfoSimulacion = ({ snapshot }) => {
           //hideFooter
           hideFooterPagination
           columns={columnsCamiones}
-          rows={camiones.map((c, idx) => ({ id: c.codigo ?? idx, ...c }))}
+          rows={camiones.map((c: any, idx: any) => ({ id: c.codigo ?? idx, ...c }))}
           sx={{
             "& .MuiDataGrid-columnHeaderCheckbox .MuiDataGrid-columnHeaderTitleContainer":
             {
@@ -569,8 +568,8 @@ const ExtraInfoSimulacion = ({ snapshot }) => {
                   onChange={handleChangeCamionAveria}
                 >
                   {camiones
-                    .filter((c) => c.enRuta)
-                    .map((c) => (
+                    .filter((c: any) => c.enRuta)
+                    .map((c: any) => (
                       <MenuItem value={c.codigo}>{c.codigo}</MenuItem>
                     ))}
                 </Select>

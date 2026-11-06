@@ -12,7 +12,7 @@ import {
   formatFechaHoraVerbose,
 } from "../utils/utilsMethods";
 
-const ModalResultado = ({ open, resultado, onClose }) => {
+const ModalResultado = ({ open, resultado, onClose }: any) => {
   return (
     <Modal
       open={open}

@@ -1,7 +1,7 @@
 import WarehouseIcon from "@mui/icons-material/Warehouse";
 import { Avatar } from "@mui/material";
 
-const IconoAlmacen = ({ almacen }) => {
+const IconoAlmacen = ({ almacen }: any) => {
   return (
     <>
       <Avatar

@@ -1,4 +1,4 @@
-import { Modal, Box, Typography, TextField, Button, Grid, Chip } from '@mui/material';
+import { Modal, Box, Typography, TextField, Button, GridLegacy as Grid } from '@mui/material';
 import { useState } from 'react';
 import type { Pedido } from '../types';
 

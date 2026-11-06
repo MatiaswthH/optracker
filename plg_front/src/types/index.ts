@@ -40,6 +40,7 @@ export interface Mantenimiento {
     tipo: TipoMantenimiento;
     descripcion: string;
     programado: boolean; // true si es del plan bimensual
+    duracion?: number; // horas
 }
 
 export interface Pedido {

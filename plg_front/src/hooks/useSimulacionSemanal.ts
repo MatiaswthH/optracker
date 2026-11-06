@@ -36,7 +36,7 @@ export function useSimulacionSemanal(
       onResultado(parsed);
     });
 
-    eventSource.addEventListener("finsimulacion", (event: MessageEvent) => {
+    eventSource.addEventListener("finsimulacion", () => {
       console.log("SSE cerrado. Fin de simulación en el backend.");
       eventSource.close();
     });

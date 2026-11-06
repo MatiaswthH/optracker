@@ -36,7 +36,7 @@ const LogEventos = ({
   snapshotsEventos,
   currentSnapshot,
   setTipoSimulacion,
-}) => {
+}: any) => {
   const leyendaCamionIconos = [
     {
       id: "1",
@@ -353,7 +353,7 @@ const LogEventos = ({
           onScroll={handleScroll}
         >
           {snapshotsEventos.length !== 0 ? (
-            snapshotsEventos?.flat().map((item, idx) => (
+            snapshotsEventos?.flat().map((item: any, idx: any) => (
               <Grow in timeout={400} key={idx}>
                 <Box
                   key={idx}

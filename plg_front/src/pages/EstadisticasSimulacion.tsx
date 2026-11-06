@@ -4,7 +4,7 @@ import {
     Typography,
     Card,
     CardContent,
-    Grid,
+    GridLegacy as Grid,
     Chip,
     Table,
     TableBody,
@@ -74,7 +74,7 @@ const EstadisticasSimulacion = () => {
             case 'exitosa': return <CheckCircleIcon />;
             case 'colapso': return <ErrorIcon />;
             case 'interrumpida': return <PauseCircleIcon />;
-            default: return null;
+            default: return undefined;
         }
     };
 

@@ -77,7 +77,7 @@ const InfoPopover = ({
         {camion.cantidadPedidos > 0 && (
           <div>
             Id de Pedidos:{" "}
-            {camion.listaPedidos.map((p) => {
+            {camion.listaPedidos.map((p: any) => {
               return (
                 <span key={p}>
                   {p}

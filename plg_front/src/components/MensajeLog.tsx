@@ -2,7 +2,7 @@ import { Box, Divider, Typography } from "@mui/material";
 import React from "react";
 import { formatFechaHoraVerbose } from "../utils/utilsMethods";
 
-const MensajeLog = React.memo(({ evento, fechaHoraActual }) => {
+const MensajeLog = React.memo(({ evento, fechaHoraActual }: { evento: any; fechaHoraActual: any }) => {
   // Cambiar cuando se implemente el backend
   const bgColor =
     evento.tipo === 3

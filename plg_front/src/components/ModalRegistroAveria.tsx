@@ -1,4 +1,4 @@
-import { Modal, Box, Typography, TextField, Button, Select, MenuItem, InputLabel, FormControl, Grid } from '@mui/material';
+import { Modal, Box, Typography, TextField, Button, Select, MenuItem, InputLabel, FormControl, GridLegacy as Grid } from '@mui/material';
 import { useState } from 'react';
 import type { Averia, TipoIncidente } from '../types';
 import { TiposIncidente } from '../types';

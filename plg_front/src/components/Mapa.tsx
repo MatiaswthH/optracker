@@ -13,7 +13,6 @@ import IconoCamion from "./IconoCamion";
 import ZoomInIcon from "@mui/icons-material/ZoomIn";
 import ZoomOutIcon from "@mui/icons-material/ZoomOut";
 import {
-  formatDiferenciaHoras,
   arrayToDate,
   formatFechaHoraVerbose,
   horasMinutosSegundos,
@@ -22,7 +21,6 @@ import {
 import InfoPopover from "./InfoPopover";
 import ModalResultado from "./ModalResultado";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
-import TakeoutDiningIcon from "@mui/icons-material/TakeoutDining";
 import IconoAlmacen from "./IconoAlmacen";
 
 const Mapa = ({
@@ -30,10 +28,8 @@ const Mapa = ({
   currentSnapshot,
   resultado,
   queueLenght,
-  simulacionSpeed,
-  setSimulacionSpeed,
   fechaInicioSimulacion,
-}) => {
+}: any) => {
   const filas = 51;
   const columnas = 71;
 
@@ -60,20 +56,7 @@ const Mapa = ({
   // Data from snapshot
   const pedidos = currentSnapshot?.pedidos ?? [];
   const bloqueos = currentSnapshot?.bloqueos || [];
-  const nodosBloqueados = bloqueos.flatMap((b: any) =>
-    (b.tramo || []).map((nodo: any) => ({
-      ...nodo,
-      fechaInicio: b.fechaInicio,
-      fechaFin: b.fechaFin,
-      tiempoRestante: b.tiempoRestante,
-    }))
-  );
   const camiones = currentSnapshot?.camiones || [];
-  const rutasCamiones = camiones.flatMap((r: any) =>
-    (r.rutaVehiculo || []).map((nodo: any) => ({
-      ...nodo,
-    }))
-  );
   const almacenes = currentSnapshot?.almacenes || [];
 
   // Tiempo simulado
@@ -90,25 +73,15 @@ const Mapa = ({
   const diffMs = fechaActualDate.getTime() - fechaInicioDate.getTime();
 
   // Capacidad de la flota
-  const totalCargaGLP = camiones.reduce((sum, c) => sum + (c.cargaGLP ?? 0), 0);
+  const totalCargaGLP = camiones.reduce((sum: any, c: any) => sum + (c.cargaGLP ?? 0), 0);
   const totalCapacidad = camiones.reduce(
-    (sum, c) => sum + (c.capacidad ?? 0),
+    (sum: any, c: any) => sum + (c.capacidad ?? 0),
     0
   );
   const porcentajeLlenado =
     totalCapacidad > 0
       ? ((totalCargaGLP / totalCapacidad) * 100).toFixed(1)
       : "0";
-
-  const camionColors = [
-    "#66BB6A", // verde medio
-    "#29B6F6", // celeste medio
-    "#AB47BC", // morado medio
-    "#FF8800", // naranja
-  ];
-
-  const getColorForCamion = (codigo: string, index: number) =>
-    camionColors[index % camionColors.length];
 
   //Tooltip state
   const [tooltipInfo, setTooltipInfo] = useState<{
@@ -125,10 +98,10 @@ const Mapa = ({
   }>({ anchorEl: null, x: null, y: null, tipo: null });
 
   const camionSeleccionado = camiones.find(
-    (c) => c.codigo === tooltipInfo.camionCodigo
+    (c: any) => c.codigo === tooltipInfo.camionCodigo
   );
   const pedidoSeleccionado = pedidos.find(
-    (p) => p.id + "-" + p.childId === tooltipInfo.pedidoId
+    (p: any) => p.id + "-" + p.childId === tooltipInfo.pedidoId
   );
 
   //Zoom controls
@@ -336,8 +309,7 @@ const Mapa = ({
           }}
         >
           {/* Camiones */}
-          {camiones.map((c, idx) => {
-            const color = getColorForCamion(c.codigo, idx);
+          {camiones.map((c: any) => {
             return (
               <Box
                 key={`camion-${c.codigo}`}
@@ -373,7 +345,7 @@ const Mapa = ({
             );
           })}
           {/* Pedidos */}
-          {pedidos.map((p) => (
+          {pedidos.map((p: any) => (
             <Box
               key={`pedido-${p.id}-${p.childId}-${p.clienteId}`}
               sx={{
@@ -428,7 +400,7 @@ const Mapa = ({
             </Box>
           ))}
           Bloqueos como líneas */}
-          {bloqueos.map((b, i) =>
+          {bloqueos.map((b: any, i: any) =>
             (b.nodosIntermedios || []).length > 1
               ? b.nodosIntermedios
                 .slice(0, -1)
@@ -477,7 +449,7 @@ const Mapa = ({
               : null
           )}
           {/* Almacenes */}
-          {almacenes.map((a) => (
+          {almacenes.map((a: any) => (
             <Box
               key={`almacen-${a.id}`}
               sx={{
@@ -504,8 +476,7 @@ const Mapa = ({
             </Box>
           ))}
           {/* Rutas como líneas */}
-          {camiones.map((r, i) => {
-            const color = getColorForCamion(r.codigo, i);
+          {camiones.map((r: any, i: any) => {
             return (r.rutaVehiculo || []).length > 1
               ? r.rutaVehiculo
                 .slice(0, -1)

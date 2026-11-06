@@ -1,14 +1,12 @@
-import { Box, CircularProgress, IconButton, Paper, Stack } from "@mui/material";
+import { Box, IconButton, Paper, Stack } from "@mui/material";
 import { useCallback, useEffect, useState } from "react";
 import Mapa from "../components/Mapa";
 import LogEventos from "../components/LogEventos";
 import { useSimulacionSemanal } from "../hooks/useSimulacionSemanal";
 import { useSimulacionDiaria } from "../hooks/useSimulacionDiaria";
 import stompClient from "../stomp-client";
-import { useSimulacion } from "../context/SimulacionContext";
 import { GridExpandMoreIcon } from "@mui/x-data-grid";
 import MenuOpenIcon from "@mui/icons-material/MenuOpen"; // Puedes usar cualquier icono de abrir
-import { TiposIncidente } from "../types";
 
 // import { useOutletContext } from "react-router-dom";
 // import ExtraInfoSimulacion from "../components/ExtraInfoSimulacion";
@@ -25,12 +23,12 @@ const Simulacion = () => {
   const [showLogEventos, setShowLogEventos] = useState(true);
 
   //Logica de animacion del mapa
-  const onSnapshot = useCallback((snapshot) => {
+  const onSnapshot = useCallback((snapshot: any) => {
     setSnapshotQueue((prev) => [...prev, snapshot]);
     console.log("Snapshot recibido.");
   }, []);
 
-  const onResultado = useCallback((res) => {
+  const onResultado = useCallback((res: any) => {
     setResultado(res);
     console.log("Resultado recibido:", res);
   }, []);
@@ -69,7 +67,7 @@ const Simulacion = () => {
               setSnapshotsEventos((prev) =>
                 [
                   ...prev,
-                  ...nextSnapshot.eventos.map((evento) => ({
+                  ...nextSnapshot.eventos.map((evento: any) => ({
                     evento,
                     fechaHoraActual: nextSnapshot.fechaHoraActual,
                   })),
@@ -115,7 +113,7 @@ const Simulacion = () => {
         setSnapshotsEventos((prev) =>
           [
             ...prev,
-            ...nextSnapshot.eventos.map((evento) => ({
+            ...nextSnapshot.eventos.map((evento: any) => ({
               evento,
               fechaHoraActual: nextSnapshot.fechaHoraActual,
             })),

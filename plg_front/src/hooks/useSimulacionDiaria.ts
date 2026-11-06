@@ -1,6 +1,4 @@
-import { useEffect, useRef } from "react";
-import SockJS from "sockjs-client";
-import { Client } from "@stomp/stompjs";
+import { useEffect } from "react";
 import stompClient from "../stomp-client"; // importa tu cliente global
 
 export function useSimulacionDiaria(
@@ -9,8 +7,6 @@ export function useSimulacionDiaria(
   onResultado: (resultado: any) => void,
   fechaInicio: string
 ) {
-  const prevEstado = useRef<number>(estado);
-  const stompClientRef = useRef<Client | null>(null);
 
   useEffect(() => {
   if (estado === 1 || estado === 2) {

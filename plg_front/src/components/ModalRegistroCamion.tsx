@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Modal, Box, Typography, TextField, Button, Grid, Select, MenuItem, InputLabel, FormControl } from '@mui/material';
+import { Modal, Box, Typography, TextField, Button, GridLegacy as Grid, Select, MenuItem, InputLabel, FormControl } from '@mui/material';
 import type { Camion, EstadoCamion } from '../types';
 import { EstadosCamion } from '../types';
 

@@ -19,6 +19,7 @@ interface ModalIniciarSimulacionProps {
     open: boolean;
     onClose: () => void;
     onAceptar: () => void;
+    setArchivo?: (nombre: string) => void;
 }
 
 const ModalPedidosDiarios: React.FC<ModalIniciarSimulacionProps> = ({
@@ -30,11 +31,10 @@ const ModalPedidosDiarios: React.FC<ModalIniciarSimulacionProps> = ({
     const [pedidosFile, setPedidosFile] = useState<File | null>(null);
 
     // Initialize hooks
-    const { loading: loadingPedidos, error: errorPedidos, success: successPedidos, enviarPedidos } = useEnviarPedidos();
+    const { loading: loadingPedidos, error: errorPedidos, enviarPedidos } = useEnviarPedidos();
 
     const isLoading = loadingPedidos;
     const hasErrors = errorPedidos;
-    const allSuccess = successPedidos;
 
     const handleAceptar = async () => {
         try {
@@ -42,7 +42,7 @@ const ModalPedidosDiarios: React.FC<ModalIniciarSimulacionProps> = ({
 
             if (pedidosFile) {
                 promises.push(enviarPedidos(pedidosFile));
-                setArchivo(pedidosFile?.name);
+                setArchivo?.(pedidosFile?.name);
             }
 
             if (promises.length > 0) {

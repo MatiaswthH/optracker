@@ -5,7 +5,7 @@ export interface CamionEstatico {
     capacidadM3: number; // en m3
 }
 
-const flotaBase: Omit<CamionEstatico, 'codigo'>[] = [
+const flotaBase: (Omit<CamionEstatico, 'codigo'> & { unidades: number })[] = [
     { tipo: 'TA', tara: 2.5, capacidadM3: 25, unidades: 2 },
     { tipo: 'TB', tara: 2.0, capacidadM3: 15, unidades: 4 },
     { tipo: 'TC', tara: 1.5, capacidadM3: 10, unidades: 4 },

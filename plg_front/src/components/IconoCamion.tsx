@@ -1,7 +1,7 @@
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import { Avatar } from "@mui/material";
 
-const IconoCamion = ({ camion, color }) => {
+const IconoCamion = ({ camion, color }: any) => {
   // 0=up, 1=right, 2=down, 3=left
   let transform = "";
   switch (camion.nodoActual.direccion) {

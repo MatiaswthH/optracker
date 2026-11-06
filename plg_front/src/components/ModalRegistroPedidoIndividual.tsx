@@ -5,7 +5,7 @@ import {
     Typography,
     TextField,
     Button,
-    Grid,
+    GridLegacy as Grid,
     Paper,
 } from '@mui/material';
 
