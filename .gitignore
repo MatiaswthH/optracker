@@ -1,0 +1,21 @@
+# IDEs
+.vscode/
+.idea/
+
+# java generated
+/target/
+.classpath
+.project
+.settings/
+logs/
+
+# os generated
+.DS_Store
+Thumbs.db
+*.log
+*.swp
+*.tmp
+### Secrets ###
+.env
+.env.*
+!.env.example

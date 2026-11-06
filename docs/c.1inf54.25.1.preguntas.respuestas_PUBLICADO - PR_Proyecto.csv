@@ -1,0 +1,349 @@
+Hoy,mar 17-jun-2025//16:57,,1INF54 Proyecto de Diseño y Desarrollo de Software,Publicado menos de 24h...,
+24,24,,"IMPORTANTE.
+Se ha publicado....",Publicado entre 24 y 48h,
+,,,Preguntas y Respuestas sobre el Proyecto,Publicado entre 48 y 72h,
+45825,,,,Publicado más de 72,
+45825,,1,¿cuál es el mapa de la ciudad?,,
+84,mar 25-mar-2025//09:00,,"La ciudad es una reticula (rectagular de ""x"" Km de largo por ""y"" Km de ancho). Todas las calles son de doble sentido. La ciudad está conceptualizada como nodos (esquinas). No existen calles diagonales. No existen calles curvas. Todos los clientes serán referidos por un ubicación (x,y) que corresponde a un nodo.
+Las dimensiones de la ciudad serán de 70Km de lado x 50Km de lado. Asuma que el eje X, será el de 70Km. La distancia entre nodo y nodo es de 1Km. Se establece que el origen de coordenadas será el punto 0, 0 que se ubicará en la parte inferior izquierda.", ,
+45825,,,,,
+45825,,2,¿dónde están los almacenes?,,
+84,mar 25-mar-2025//09:00,,"El almacén central está ubicado en la posición X=12, Y=8.
+El almacén intermedio Norte está en la posición X= 42, Y= 42.
+El almacén intermedio Este está en la posición X= 63, Y= 3.",,
+45825,,,,,
+45825,,3,¿Qué son los bloqueos?,,
+78,lun 31-mar-2025//12:01,,"Los bloqueos de las calles son situaciones que ocurren por lo cual no es posible el acceso vehícular en algunos tramos de la pista. Dichos tramos bloqueados están identificado por un par de puntos extremos (nodos). Un nodo (una esquina o un extremo del tramo) bloqueado no se puede atravesar y no se permite girar sobre él. Por ello, si una unidad llega a un nodo bloqueado, debe regresar por el mismo lugar por el que llegó (media vuelta o vuelta en U)..
+
+Para el curso se asumirá que sólo existen bloqueos planificados con antelación. No hay bloqueos fortuitos por ninguna razón (p.e. accidentes, caida de postes, etc). Las calles se bloquean durante un periodo de tiempo planificado por la municipalidad.  Se tendrá un archivo mensual con dicha planificación (aaaamm.bloqueado.txt).
+
+Los bloqueos que se definan pueden ser como un polígono abierto o polígono cerrado. Para el caso de un polígono abierto, se tendrá que siempre es posible llegar a todos los puntos de la poligonal. Para el caso de un polígono cerrado, sólo serán del tipo convexo; por lo que algunos puntos no serán alcanzados.
+Sin embargo, para este caso concreto, se trabajará con polígonos abiertos.
+
+Archivo de bloqueos
+El nombre del archivo de calles bloqueadas es:
+Nombre: aaaamm.bloqueadas
+donde aaaa = año = 2025, 2026
+mm = mes 01 para enero, 02 para febrero, así sucesivamente
+
+Se les entregará, al menos, un año de calles bloquedas. En caso necesario, pueden extender los mismos archivos para el siguiente año.
+
+No se van a considerar otros tipos de bloqueos ni tampoco las generadas por las averías. Esto último punto significa que si una unidad se averia, la vía sigue habilitada para que otros camiones de carga circulen sin problemas por ahí.","La estructura de archivo de bloqueo de calles es:
+Registro:     ##d##h##m-##d##h##m:x1,y1,x2,y2,x3,y3,x4,y4......xn,yn
+                     01d06h00m-01d15h00m:31,21,34,21
+
+     1er ##d##h##m se refiere al momento de inicio del bloqueo
+     2do ##d##h##m se refiere al momento de fin del bloqueo
+     ##d##h##m  significa: 
+             ##d = día : 01d, 02d, 03d, 24d, ..
+             ##h = hora: 00h, 01h, 02h, 03h,.... 10h, 17h
+             ##m= minuto: 00m, 01m, 02m, 03m, ... 10m, 11m, ...58m, 59m
+     Xi,Yi representa el nodo, expresado como coordenada X,Y.
+P1 = x1,y1 punto inicial del primer tramo de nodos bloqueados
+P2 = x2,y2 punto final del primer tramo de nodos bloqueados e inicio del segundo tramo de nodos bloqueados (en caso existan más Puntos P)
+P3 = x3,y3 punto final del segundo tramo de nodos bloqueados e inicio del tercer tramo de nodos bloqueados (en caso existan más Puntos P)
+
+El registro tiene inicio (primer dd:hh:mm) y fin (segundo dd:hh:mm) de periodo donde los nodos estarán bloqueados.",
+45825,,,,,
+45825,,4,¿Cuál es la flota de camiones cisternas?,,
+78,lun 31-mar-2025//12:22,,"La flota es:
+Tipo---Peso Bruto---Carga -------Peso Carga----------Peso-----------Unidades
+------------Tara----------GLP-------------GLP----------Combinado
+TA ___  2.5 Ton ___ 25 m3 _____ 12.5 Ton ___ 15.0 Ton _____ 02 unid
+TB ___  2.0 Ton ___ 15 m3 _____ 07.5 Ton ___ 09.5 Ton _____ 04 unid                
+TC ___  1.5 Ton ___ 10 m3 _____ 05.0 Ton ___ 06.5 Ton _____ 04 unid                
+TD ___  1.0 Ton ___ 05 m3 _____ 02.5 Ton ___ 03.5 Ton _____ 10 unid              
+
+Todos los tanques para el desplazamiento de las tanques cisternas son de 25 Galones de Petroleo.
+
+Consumo [Galones]: Distancia[Km] x Peso [Ton] / 180
+    Distancia expresado en Km recorrido
+    Peso se refiere al peso combinado expresado en Toneladas. 
+El peso combinado, como lo pueden notar, es el peso bruto + peso de la carga. 
+Para este caso se considera despreciable el peso del petroleo (el combustible que usa el camión)
+La velocidad promedio es de 50Km/h
+
+Los códigos de los caminones son:  TTNN
+  donde TT es el tipo y NN es un correlativo.
+  ejemplos:
+       TA01  es la unidad  01 del tipo TA
+       TD10  es la unidad 10 del tipo TD""
+
+Recuerde que los valores se pueden modificar en cualquier momento, pero NO durante las presentaciones del software.
+","¿Que pasa si se traslado 5m3, en el TA01?
+
+Peso: Tara + Peso Carga (GLP)= 2.5 + 12.5/5 = 2.5 + 2.5 = 5Ton
+Peso Total (TA, 5m3) = 5 Ton.
+
+Supuesto: carga llena.
+Peso de TA = 2.5 Ton + 12.5Ton = 15Ton.
+25 Gal ConsumoMAX = Dist * 15 Ton / 180
+
+Dist Max = 25 * 180 / 15 = 300 Km.",
+45825,,,,,
+45825,,5,¿Cuál es el plan de mantenimiento,,
+78,lun 31-mar-2025//12:24,,"El nombre del archivo de mantenimiento preventido es:
+Nombre: mantpreventivo
+Registro: aaaammdd:TTNN
+ejemplo:      aaaa = año
+                      mm   = mes (01, 02, 03, ...)
+                      dd   = día (01, 02, 03, ...)
+                      TT   = Tipo (TA, TB, ...)
+                      NN   = Numero (01, 02, ...)
+Nota 1. Un tanque cisterna programado NO estará disponible para programación de rutas desde las 00:00 hasta las 23:59.
+Nota 2. Si un tanque cisterna está en ruta, al inicio de su mantenimiento, tendrá que regresar en ese momento a la planta sin completar la ruta. ","El plan de manteniemiento es bimensual, y se repite cada 2 meses, p.e. para agosto, septiembre, el siguiente:
+20250401:TA01
+20250403:TD01
+20250405:TC01
+20250407:TB01
+20250410:TD02
+20250413:TD03
+20250416:TB02
+20250419:TD04
+20250422:TC02
+20250425:TD05","
+
+20250501:TA02
+20250503:TD06
+20250505:TC03
+20250507:TB03
+20250510:TD07
+20250513:TD08
+20250516:TB04
+20250519:TD09
+20250522:TC04
+20250525:TD10"
+45825,,,,,
+45825,,6,¿Cuál es la capacidad de la flota de camiones cisterna?¿Puede cambiar en el tiempo?,,
+78,lun 31-mar-2025//12:10,,"La capacidad de la flota está determinada por las capacidades individuales de cada camión. Entonces se tiene:
+
+Tipo-----------Carga (GLP)---Unidades     Total
+TA ______ 25 m3 _______ 02 unid       50m3
+TB ______15 m3 _______ 04 unid        60m3       
+TC _____  10 m3 _______ 04 unid        40m3         
+TD _____  05 m3 _______10 unid         50m3     
+
+Todo esto da un total de 200m3 como capacidad de la flota.
+
+La carga de los registros de la flota y la consulta de la flota será realizada directamente en la Base de Datos.",,
+45825,,,,,
+45825,,7,¿Cómo es el archivo histórico de pedidos?,,
+78,lun 31-mar-2025//11:30,,"El archivo histórico y proyectado de pedidos es mensual. Se considera histórico a cualquier pedido que sea anterior al instante de tiempo actual. El archivo tiene la siguiente estructura:
+
+Nombre de archivo será: ventas2025mm  mm=mes (01 para enero, 02 para febrero, así sucesivamente)
+
+Registro: ##d##h##m:posx,posY,c-idCliente, m3, hLímite
+Ejemplo: 11d13h31m:45,43,c-167,9m3,36h
+
+##d##h##m es el día, hora y minuto en que el pedido llegó; en el ejemplo es 11d13h31m
+posX,posY es la ubicación de la entrega, en el ejemplo es 45,43
+c-idCliente es el identificador del cliente  c-167
+m3 es la cantidad de GLP en metros cúbicos (número entero), en el ejemplo es 9m3
+hlimite, el número de horas límite de la entrega, en el ejemplo 36h",,
+45825,,,,,
+45825,,8,¿Cómo se ingresa los datos de mantenimiento de la flota?,,
+78,lun 31-mar-2025//11:40,,"Los datos de mantenimiento están en un archivo de texto y deben ser cargados con anterioridad a la primera presentación. Durante la primera presentación se veríficará que existe dicho plan cargado en las bases de datos. La verificación será mediante un herramienta de visualización de BD.
+
+La carga de los registros del plan de mantenimiento será realizada directamente en la Base de Datos.",,
+45825,,,,,
+45825,,9,¿Qué son las averías?,,
+78,lun 31-mar-2025//12:28,,"Las averías constituyen una interrupción al servicio. Se señalará como incidente como sinónimo de avería. El conductor se comunica por teléfono con el operador logísitico y le informa sobre la unidad, el nodo y el tipo de incidente.
+Los tipos de incidentes son:
+- Incidentes tipo 1. Por ejemplo. 
+         Se baja la llanta y se puede reparar en el mismo lugar por el conductor. 
+         Este incidente inmoviliza la unidad en el lugar (un nodo) por 2 horas.
+- Incidentes tipo 2. Por ejemplo. 
+         Se ahoga (obstruye) el motor. 
+         Este incidente inmoviliza la unidad en el lugar (un nodo) por 2 horas.
+         Este incidente deja inoperativo a la unidad por un turno completo en el taller. 
+         En detalle:
+             Si el incidente ocurre en el turno 1 del día A, estará disponible en el turno 3 del día A. 
+             Si el incidente ocurre en el turno 2 del dia A, estará disponible en el turno 1 del día A+1 (dia siguiente). 
+             Si el incidente ocurre en el turno 3 del día A, estará disponible en el turno 2 del día A+1 (dia siguiente). 
+- Incidentes tipo 3. Por ejemplo. Se choca la unidad. 
+         Este incidente inmoviliza la unidad en el lugar (un nodo) por 4 horas.
+         Este incidente deja inoperativo a la unidad por un día completo en el taller. 
+         Si el incidente ocurre en el turno 1 , 2 o 3 del día A, estará disponible en el turno 1 del día A+3. 
+
+En todos los tipos de incidentes. 
+         Mientras la unidad esté inmovilizada otra unidad puede o no recoger parte o todas la carga. (trasvase de producto).
+         Concluido el tiempo de inmovilización, en los tipos 2 y 3, la unidad vehicular será llevada al almaceán.
+         En el tipo 1, la unidad tomará la ruta que la última generación de rutas le haya designado.   
+
+En las operaciones día a día...
+   Se podrá seleccionar por pantalla y por cajetin de datos una unidad vehicular a la que se le registrará un tipo de incidente.
+En simulación de 7 días...
+   Se podrá seleccionar por pantalla o cajetin de datos una unidad vehicular a la que se le registrará un tipo de incidente.
+   Se podrá subir un archivo de incidencias que se describe más abajo.
+En simulación colapso, 
+    No aplican las averias.
+
+El archivo se describe al costado derecho de esta celda.
+averias.v1.txt (archivo de averías version 1).  Puede por ahora definir su propio archivo de averías.
+En su momento se podrá descargar del Site del curso.","
+Archivo de Averias:   
+El nombre del archivo de averías será:
+Nombre: averias.txt
+
+La estructura de archivo de averás será:
+Registro:  tt_######_ti
+
+tt: turno donde ocurre la incidencia: T1, T2, T3
+######: código de la unidad vehicular: motos o autos
+ti: tipo de incidente:  TI1, TI2, TI3
+
+En caso una unidad NO está en operación en ese momento y sí figura en el archivo de averías; éste no será tomada en cuenta para dicha avería.
+En caso una unidad Sí está en operación en el turno. La avería debe ocurrir de manera aleatoria en el rango del tramo de 5% a 35% que le toca recorrer a la unidad. Ejemplo. Si una unidad debe recorrer 100km entre ida y vuelta, ésta se debe averías entre el km 05 y el km 35. Se asume que un escenario extremo es que 50% se use de ida y 50% de regreso; pero solo tiene sentido cuando la avería tiene carga para entregar.
+
+El archivo se repite todos los días, por ser un ejercicio académico.",
+45825,,,,,
+45825,,10,¿Cuál es el horario de trabajo?,,
+78,lun 31-mar-2025//12:40,,"Los pedidos y las entregas son 24 x 7, todo el día a toda hora todos los días de la semana.",,
+45825,,,,,
+45825,,11,¿ Hay tráficos y semáforos ?,,
+78,lun 31-mar-2025//12:40,,"Se ha considerado que la velocidad promedio indicada es constante e inalterable en cualquier momento. Por ello, todo lo relacionado a semáforos será considerado como que siempre está en verde (no se detiene) y no hay tráfico en dichas calles.",,
+45825,,,,,
+45825,,12,¿Cuál es el tiempo de carga/descarga en la planta ?,,
+59,sáb 19-abr-2025//05:40,,"El tiempo de carga y descarga en la planta es despreciable, es decir T=0.",,
+45825,,,,,
+45825,,13,¿Cuál es el tiempo de descarga en la entrega en los clientes ?,,
+59,sáb 19-abr-2025//05:50,,El tiempo de descarga en la entrega a los clientes es de 15 minutos.,,
+45825,,,,,
+45825,,14,¿Ese tiempo de descarga en los clientes está considerado dentro del plazo de entrega?,,
+59,sáb 19-abr-2025//06:00,,"No, el plazo de entrega se mide desde que se hizo el pedido hasta el instante en que el camión llega a las instalaciones del cliente.
+El tiempo que le toma al descargar el GLP no afecta el plazo, pero sí provoca que el camión salga luego del tiempo de descarga.",,
+45825,,,,,
+45825,,15,"¿Cuánto es el tiempo que debe pasar un camión en la planta, antes de volver a salir?",,
+59,sáb 19-abr-2025//06:10,,"Los camiones deben pasar por un ""mantenimiento de rutina para salir"".
+Dicho mantenimiento tiene un tiempo de 15 minutos.",,
+45825,,,,,
+45825,,16,¿Las averías deben ocurrir sí o sí en el rango de 5% y 35%?,,
+59,sáb 19-abr-2025//06:15,,"Sí.  Algunas precisiones que pueden ayudar. 
+
+1. Existe más de una manera de abordar el tema de las averías. Algunas pueden incluir comunicación (ida y vuelta) entre el Gestor de Visualización (GV) y el Componente planificador (CP). Otras maneras, pueden ser determinadas únicamente en el CP y comunicadas (una sola dirección) al GV.
+
+2. Deben haberse dado cuenta, en principio, que las averías NO son parte explicita del proceso del algoritmo de planificación. Pues las rutas se planifican en el CP tomando en cuenta los pedidos y los vehículos (según su estado).
+
+3. Las averías ocurren en la Operación (no en la Planificación). Sin embargo, para facilitar la simulación, lo más cercano a lo real, se ha introducido a través de un archivo las unidades y turnos junto con una regla de ocurrencia de la avería entre 5% y 35%.
+
+4. Algo muy importante también que debe estar claro. Una vez que ocurra una avería, se tiene un impacto en la operación y de manera consecuente en la siguiente generación de rutas del CP. El impacto en la planificación, es obvio, depende del tipo de avería que se indica en el archivo.
+
+5. Entonces, una forma de pensarlo es: cada vez que el CP termine de generar las rutas, deben generar las lista de las unidades que se deben averíar (pues ya se tienen las rutas de las unidades generadas). Las rutas y las averías determinadas, se pasan al GV para mostrar los desplazamientos y las averías.
+
+6. La siguiente vez que el CP generé rutas deberá tomar en cuenta también las averías que sí hayan ocurrido desde la última vez que se generó rutas. Asimismo, deberá ajustar el archivo de averías en caso sea necesario luego de concluir la generación de rutas. Se dice hayan ocurrido, pues no se trata que cambien la planificación en función de las averías futuras, pues NO son predecibles las averías futuras. En el curso, se ha establecido como una regla sólo con el propósito de poder incorporarlo en el simulador.
+
+Entonces, según lo indicado anteriormente, cómo ya se tiene toda la ruta planificada de cada vehículo, se determina de manera aleatoria entre el 5% y 35% de la ruta el momento en que se debe averíar.. OJO. Debe ajustar la posición obtenido de modo que la avería ocurra en un nodo. Recuerde que el rango entre 5% y 35% asegura que la avería ocurra cuando el vehículo tiene aún carga. 
+Las unidades sólo se averían una vez por turno. Entonces no hay averias consecutivas por cada entrega. El rango definito de 5-35 es para la ruta completa, tanto desde que sale del almacén como de retorno hasta el almacén.","El turno de trabajo, para este caso, sólo es referencial para la disponibilidades de los camiones cisternas. Los turnos a considerar son:
+T1: 00:00 hasta antes de las 08.00 
+T2: 08:00 hasta antes de las 16:00
+T3: 16:00 hasta antes de las 24:00",
+45825,,,,,
+45825,,17,¿Qué datos se reciben por la interfaz?,,
+59,sáb 19-abr-2025//06:20,,"Los datos que se reciben por la interfaz depende del tipo de escenario:
+Operaciones día a día: 
+       Se ingresará los datos de pedido por el teclado y lo deben hacer en simultáneo todos los miembros del equipo.
+       Deben imaginar que su software está instalado en una empresa de distribución de GLP.
+       Además, se debe poder ingresar un archivo de texto con un juego de datos (se usará el formato de la data histórica).
+       Cuando se suba un archivo con pedidos se debe tener claro, que los datos corresponden al futuro.
+       El algoritmo debe respetar la fecha y hora de ejecución ""en ese instante"" y los datos de los pedidos del archivo.
+Simulaciones.
+       Se debe poder ingresar la fecha y hora de inicio de la simulación.  Debería ser una pantalla anterior al de la pantalla del mapa.
+       La simulación de 7 días debe cubrir las 7 x 24 h = 168h siguientes.
+       Para fines prácticos, la simulación consumirá de la data proyectada que ya fue entregada en su oportunidad.
+
+Para cada escenario se debe poder consultar el estatus de los camiones cisternas indicando su situación respecto del escenario (entre otros como: mantenimiento, averiado, en desplazamiento).",,
+45825,,,,,
+45825,,18,¿Entrada de datos para parametrización del algoritmo?,,
+59,sáb 19-abr-2025//06:30,,"Los datos de parametrización del algoritmo debe ser definido por el equipo de desarrollo. Esos datos tienen que ver entre otros con lo que se ha llamado (en el video ""Video del 2021-2 útil para mostrar la aceleración"") y que se tienen a continuación: 
+Dependiendo de cómo se ha realizado la solución deben contestar de la mejor forma posible.
+¿Cuánto es el Sa (salto del algoritmo) o su equivalente?
+¿Cuánto es el Sc (salto del consumo) o su equivalente?
+¿Cuánto en el (Ta tiempo de ejecución) del algoritmo o su equivalente?
+¿Cúanto tiempo dura la simulación de 7 días? Debe asegurarse que este tiempo esté dentro del tiempo establecido en el documento ""Situación auténtica"".
+
+El dato de 4 horas de plazo como tiempo mínimo de entrega de paquetes, debe ser considerado como una variable.
+Eventualmente dicho valor puede ajustarse en el tiempo.",,
+45825,,,,,
+45825,,19,¿Que es la replanificación?,,
+59,sáb 19-abr-2025//06:40,,"La replanificación se entiende como el cambio de ruta de los camiones para atender nuevos pedidos, que circunstancialmente son más críticos. En el ejemplo que se pone más abajo, se fuerza a que toda la flota vaya al punto más alejado con tiempo de holgura alta. Pero luego de 1 hora (por ejemplo), hay un nuevo grupo de pedidos que debe obligar a que algunos camiones cambien sus rutas, pues tienen menos tiempo de plazo de entrega.
+
+Considerando que el patrón de pedidos es el siguiente:
+DDdHHhMMm:Px,Py,c-CC,Qm3,PPh
+
+El primer juego de datos, se presentan a continuación:
+
+Juego de Datos que fuerza a que todos los camiones cisternas salgan.
+Alternativa 1: 20 pedidos que obligan explícitamente a que toda la flota vaya al punto más lejano con capacidad llena y con un plazo holgado.
+
+01d11h25m:69,49,c-999,25m3,12h
+01d11h25m:69,49,c-998,25m3,12h
+01d11h25m:69,49,c-997,15m3,12h
+01d11h25m:69,49,c-996,15m3,12h
+01d11h25m:69,49,c-995,15m3,12h
+01d11h25m:69,49,c-994,15m3,12h
+01d11h25m:69,49,c-993,10m3,12h
+01d11h25m:69,49,c-992,10m3,12h
+01d11h25m:69,49,c-991,10m3,12h
+01d11h25m:69,49,c-990,10m3,12h
+01d11h25m:69,49,c-989,05m3,12h
+01d11h25m:69,49,c-988,05m3,12h
+01d11h25m:69,49,c-987,05m3,12h
+01d11h25m:69,49,c-986,05m3,12h
+01d11h25m:69,49,c-985,05m3,12h
+01d11h25m:69,49,c-984,05m3,12h
+01d11h25m:69,49,c-983,05m3,12h
+01d11h25m:69,49,c-982,05m3,12h
+01d11h25m:69,49,c-981,05m3,12h
+01d11h25m:69,49,c-980,05m3,12h","Alternativa 2: Pedido que obliga de manera implícita que toda la flota vaya al punto más lejano con capacidad llena y con un plazo holgado.
+
+01d11h25m:69,49,c-999,200m3,12h
+(ver preg. 7, se pide 200m3 pues es la máxima capacidad de toda la flota y se espera que el algotimo de planificación asigne a toda la flota.
+
+
+El Juego de datos que ""obliga a la replanificación"" es el siguiente:
+
+01d12h25m:2,49,c-999,25m3,4h
+01d12h25m:2,48,c-997,15m3,4h
+01d12h25m:2,47,c-996,15m3,4h
+01d12h25m:1,49,c-993,10m3,4h
+01d12h25m:1,48,c-991,10m3,4h
+01d12h25m:1,47,c-989,05m3,4h
+01d12h25m:3,49,c-988,05m3,4h
+
+
+IMPORTANTE.
+La fecha y hora del primer juego de datos debe cambiar para cuando lo quieran probar en el escenario día a día. Claro, también es posible probarlo en el escenario de simulación semanal.
+",
+45825,,,,,
+45825,,20,¿Cuál es el tiempo de trasvase en la ruta (cuando un camión se haya averiado?,,
+36,lun 12-may-2025//11:00,,El tiempo de trasvase en la ruta es de 15min.,,
+45825,,,,,
+45825,,21,¿ s?,,
+45825,,,,,
+45825,,,,,
+45825,,22,¿ s?,,
+45825,,,,,
+45825,,,,,
+45825,,23,¿ s?,,
+45825,,,,,
+45825,,,,,
+45825,,24,¿ s?,,
+45825,,,,,
+45825,,,,,
+45825,,25,¿ s?,,
+45825,,,,,
+45825,,,,,
+45825,,26,¿ s?,,
+45825,,,,,
+45825,,,,,
+45825,,27,¿ s?,,
+45825,,,,,
+45825,,,,,
+45825,,28,¿ s?,,
+45825,,,,,
+45825,,,,,
+45825,,29,¿ s?,,
+45825,,,,,
+45825,,,,,
+45825,,30,¿ s?,,
+45825,,,,,

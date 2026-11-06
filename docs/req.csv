@@ -1,0 +1,101 @@
+Id. Agrupador,Agrupador,Id. RF.,Nombre Exigencia,Exigencia,Comentario,Propuso,Registro de trazabilidad
+1,AG01,1,"El sistema debe permitir que el usuario registre pedidos con fecha/hora de solicitud, volumen de GLP, ubicación del cliente y plazo de entrega.",Exigible,,Matias Sulca,No iniciado
+2,AG01,2,"El sistema debe permitir que se validen los datos de cada pedido (rango de cantidades, coordenadas válidas, plazo mínimo de 4 horas).",Exigible,,Matias Sulca,No iniciado
+3,AG01,3,"El sistema debe permitir que el usuario edite los datos del pedido antes de confirmar la disponibilidad de camiones y rutas.",Exigible,,Matias Sulca,No iniciado
+4,AG01,4,"El sistema debe permitir que se soliciten datos esenciales del cliente para confirmar su identidad y seriedad comercial (RUC, razon social, etc)",Exigible,,Matias Sulca,No iniciado
+5,AG01,5,"El sistema debe permitir que se busquen pedidos mediante filtros avanzados (destino, tamaño, región, ID, etc.)",Exigible,,Matias Sulca,No iniciado
+6,AG01,6,"El sistema debe permitir que se genere una confirmación por correo electrónico al cliente.",Deseable,,Matias Sulca,No iniciado
+7,AG01,7,"El sistema debe permitir que el módulo de pedidos se conecte a la base de datos central para búsqueda y actualización en tiempo real.",Exigible,,Matias Sulca,No iniciado
+8,AG01,8,"El sistema debe permitir que se asigne automáticamente un código único a cada pedido",Exigible,"Podría usarse un autogenerado tipo “PED-00001”",James Martinez,No iniciado
+9,AG01,9,"El sistema debe permitir que se sugiera un tipo de camión de acuerdo con la capacidad necesaria para el pedido.",Deseable,,Matias Sulca,No iniciado
+10,AG01,10,"El sistema debe permitir que se elaboren indicadores de rendimiento de los pedidos (tiempos de entrega, puntualidad, número de pedidos entregados y rechazados).",Exigible,,James Martinez,No iniciado
+11,AG01,11,"El sistema debe permitir que se controlen los estados del pedido (nuevo, confirmado, en ruta, entregado, cancelado).",Exigible,,Saymon Nicho,No iniciado
+12,AG01,12,"El sistema debe permitir que se envíen notificaciones internas cuando se crea o modifica un pedido.",Deseable,,Saymon Nicho,No iniciado
+13,AG02,1,"El sistema debe permitir que se aplique un algoritmo metaheurístico en lenaguaje Java de planificación de rutas.",Exigible,,Matias Sulca,No iniciado
+14,AG02,2,"El sistema debe permitir que se asignen automáticamente rutas eficientes para cumplir con los pedidos.",Exigible,"Eficiente se refiere a que se reduzcan costos, distancias y tiempo",Matias Sulca,No iniciado
+15,AG02,3,"El sistema debe permitir que se tomen en cuenta la distancia y el consumo de combustible al planificar las rutas.",Exigible,"galones = distancia * peso / 180",Matias Sulca,No iniciado
+16,AG02,4,"El sistema debe permitir que se optimice el uso de la flota para reducir los costos operativos.",Exigible,,Matias Sulca,No iniciado
+17,AG02,5,"El sistema debe permitir que se replanifiquen las rutas para los pedidos cuyo camión está en ruta durante su programación de mantenimiento",Exigible,,Matias Sulca,No iniciado
+18,AG02,6,"El sistema debe permitir que se apliquen dos algoritmos metaheurísticos para optimizar las rutas.",Exigible,"Serán comparados en el informe ISA",James Martinez,No iniciado
+19,AG02,7,"El sistema debe permitir que se replanteen las rutas de manera dinámica en caso de cambios en los pedidos.",Exigible,,James Martinez,No iniciado
+20,AG02,8,"El sistema debe permitir que se consideren los tiempos de carga y descarga de los pedidos en la planificación",Deseable,"Por confirmar por el profesor si los tiempos de descarga se consideran en los tiempos de entrega.",Jeremy López,No iniciado
+21,AG02,9,"El sistema debe permitir que se tomen en cuenta las restricciones de mantenimiento de los camiones al planificar las rutas.",Exigible,,James Martinez,No iniciado
+22,AG02,10,"El sistema debe permitir que se excluyan camiones en mantenimiento preventivo o correctivo de la planificación.",Exigible,,James Martinez,No iniciado
+23,AG02,11,"El sistema debe permitir que el tiempo de descarga se sume al plazo de entrega para no incurrir en tardanzas.",Deseable,"Por confirmar por el profesor si los tiempos de descarga se consideran en los tiempos de entrega.",Jeremy López,No iniciado
+24,AG02,12,"El sistema debe permitir que se registre el tiempo de inactividad de los vehículos en almacenes o centros de distribución.",Deseable,,Jeremy López,No iniciado
+25,AG02,13,"El sistema debe permitir que ningún pedido incumpla el plazo de entrega. De no ser posible, debe generar una alerta.",Exigible,,James Martinez,No iniciado
+26,AG02,14,"El sistema debe permitir que se establezcan prioridades de planificación en función de la importancia del cliente.",Deseable,,James Martinez,No iniciado
+27,AG02,15,"El sistema debe permitir la visualización de las rutas planeadas a través de una interfaz gráfica.",Exigible,,Matias Sulca,No iniciado
+28,AG02,16,"El sistema debe permitir que los supervisores modifiquen manualmente las rutas generadas.",Deseable,,James Martinez,No iniciado
+29,AG02,17,"El sistema debe permitir que se ejecute una simulación para evaluar diversas estrategias de entrega.",Exigible,,Matias Sulca,No iniciado
+30,AG02,18,"El sistema debe permitir que el algoritmo considere la distancia del punto de partida del camión hasta el punto de entrega, optando por los de menor distancia.",Exigible,,James Martinez,No iniciado
+31,AG02,19,"El sistema debe permitir que se consideren las restricciones geográficas de la ciudad de XYZ.",Exigible,"Cuadrícula de 70 x 50 Km",James Martinez,No iniciado
+32,AG02,20,"El sistema debe permitir que la capacidad de los tanques intermedios forme parte de la planificación.",Exigible,"160 m³ c/u",James Martinez,No iniciado
+33,AG02,21,"El sistema debe permitir que se evalúe el impacto del consumo de petróleo en diferentes escenarios de entrega.",Exigible,,James Martinez,No iniciado
+34,AG02,22,"El sistema debe permitir que se realicen ajustes en tiempo real en caso de cancelaciones.",Exigible,,Matias Sulca,No iniciado
+35,AG02,23,"El sistema debe permitir que se programen rutas que incluyan múltiples entregas en un mismo viaje.",Deseable,"Ejemplo: Un pedido es de 50L y otro de 20L, se asignará un camión con 70L de GLP y se harán 2 entregas en un viaje.",James Martinez,No iniciado
+36,AG02,24,"El sistema debe permitir que un mismo pedido pueda ser entregado en múltiples viajes/camiones si supera la capacidad individual.",Exigible,"Por validarse",Jeremy López,No iniciado
+37,AG02,25,"El sistema debe permitir operar las 24 horas del día, 7 días a la semana.",Exigible,,Jeremy López,No iniciado
+38,AG02,26,"El sistema debe permitir que se apliquen restricciones de carga mínima y máxima por camión.",Exigible,,James Martinez,No iniciado
+39,AG02,27,"El sistema debe permitir que se consideren bloqueos de calles planificados para recalcular rutas de entrega.",Exigible,,James Martinez,No iniciado
+40,AG02,28,"El sistema debe permitir que se integre inteligencia artificial para mejorar la precisión en la asignación de rutas.",Deseable,,Matias Sulca,No iniciado
+41,AG02,29,"El sistema debe permitir que se simule el desempeño de la flota en distintos períodos de demanda.",Exigible,,Matias Sulca,No iniciado
+42,AG02,30,"El sistema debe permitir que se comparen los dos algoritmos metaheurísticos y sus resultados.",Exigible,,James Martinez,No iniciado
+43,AG02,31,"El sistema debe permitir que se asuma que las calles son solo verticales y horizontales, sin curvas ni diagonales.",Exigible,,James Martinez,No iniciado
+44,AG02,32,"El sistema debe permitir que se apliquen penalizaciones a rutas ineficientes.",Deseable,"Esto se podría ver en un reporte o KPI",James Martinez,No iniciado
+45,AG03,1,"El sistema debe permitir que se muestre un mapa interactivo con la ubicación actual de cada camión en la cuadrícula de la ciudad.",Exigible,,Matias Sulca,No iniciado
+46,AG03,2,"El sistema debe permitir al usuario hacer zoom (acercar/alejar) y desplazarse libremente por el mapa para ver los detalles de la ruta",Deseable,,Saymon Nicho,No iniciado
+47,AG03,3,"El sistema debe permitir que se muestren los pedidos pendientes, en ruta y entregados con íconos diferenciados.",Exigible,,Saymon Nicho,No iniciado
+48,AG03,4,"El sistema debe permitir que se incluyan capas en el mapa para visualizar zonas bloqueadas",Deseable,,Saymon Nicho,No iniciado
+49,AG03,5,"El sistema debe permitir que se presente el estado de cada camión (en movimiento, en mantenimiento, averiado, etc.) en la interfaz.",Exigible,,Saymon Nicho,No iniciado
+50,AG03,6,"El sistema debe permitir que se actualice en tiempo real la posición aproximada del camión según su velocidad y ruta asignada.",Exigible,,Saymon Nicho,No iniciado
+51,AG03,7,"El sistema debe mostrar en el mapa la ruta planificada del camión con resaltado visual del trayecto",Deseable,,Saymon Nicho,No iniciado
+52,AG03,8,"El sistema debe permitir que se destaquen los tanques intermedios y la planta principal en el mapa.",Exigible,,Saymon Nicho,No iniciado
+53,AG03,9,"El sistema debe permitir que se muestre, al hacer clic en un camión, información adicional (carga transportada, destino, consumo).",Deseable,,Saymon Nicho,No iniciado
+54,AG03,10,"El sistema debe permitir que se despliegue un panel con métricas globales (pedidos en curso, uso de la flota).",Exigible,,Saymon Nicho,No iniciado
+55,AG03,11,"El sistema debe permitir que se active un modo de visualización rápida de “simulación colapso” con ejecución entre 20 y 50 min.",Exigible,,Saymon Nicho,No iniciado
+56,AG03,12,"El sistema debe permitir que el usuario modifique la velocidad de la simulación a través de botones.",Deseable,,Jeremy López,No iniciado
+57,AG03,13,"El sistema debe permitir que se genere un log de eventos de la simulación en tiempo real",Deseable,"Esto se puede implementar como un ""chat"" al costado del mapa. (Ej. Dia 2 - 4:00pm: Se reportó avería del camión 4.)",Jeremy López,No iniciado
+58,AG03,14,"El sistema debe permitir que se notifique a los clientes o usuarios sobre cambios en la ruta o averías que afecten el pedido.",Deseable,,Jeremy López,No iniciado
+59,AG03,15,"El sistema debe permitir que el usuario visualice los camiones inactivos y el tiempo/lugar de inactividad.",Exigible,,Jeremy López,No iniciado
+60,AG03,16,"El sistema debe permitir que se muestre si un camión está en mantenimiento preventivo o correctivo.",Exigible,,Jeremy López,No iniciado
+61,AG04,1,"El sistema debe permitir que se registren y modifiquen los datos de cada camión (tipo, capacidad, etc.).",Exigible,,Jeremy López,No iniciado
+62,AG04,2,"El sistema debe permitir que se carguen datos de camiones de forma masiva mediante un archivo CSV.",Deseable,,Jeremy López,No iniciado
+63,AG04,3,"El sistema debe permitir que se importe el plan de mantenimiento preventivo desde el archivo mantpreventivo.",Exigible,,Saymon Nicho,No iniciado
+64,AG04,4,"El sistema debe permitir que se registren en la base de datos las fechas en que cada camión no estará disponible.",Exigible,"24h cada 2 meses",Saymon Nicho,No iniciado
+65,AG04,5,"El sistema debe permitir que se bloquee la asignación de camiones en mantenimiento para cualquier ruta.",Exigible,,Saymon Nicho,No iniciado
+66,AG04,6,"El sistema debe permitir que el usuario sea notificado si un camión en ruta entra en mantenimiento a mitad de entrega (cancelar o reasignar).",Exigible,,Saymon Nicho,No iniciado
+67,AG04,7,"El sistema debe permitir que el usuario reprograme mantenimientos preventivos bajo condiciones definidas.",Deseable,,Saymon Nicho,No iniciado
+68,AG04,8,"El sistema debe permitir que se muestre en pantalla un calendario con los mantenimientos próximos de cada camión.",Exigible,,Saymon Nicho,No iniciado
+69,AG04,9,"El sistema debe permitir que se genere un reporte de historial de mantenimientos completados y pendientes.",Deseable,,Saymon Nicho,No iniciado
+70,AG04,10,"El sistema debe permitir que se marque un mantenimiento como concluido y se libere el camión para operaciones.",Exigible,,Saymon Nicho,No iniciado
+71,AG04,11,"El sistema debe permitir que se visualice información sobre tipos de camiones y sus capacidades efectivas.",Exigible,,Matias Sulca,No iniciado
+72,AG05,1,"El sistema debe permitir que se registren incidentes (averías) en tiempo real, con tipo de incidente (TI1, TI2, TI3).",Exigible,,James Martinez,No iniciado
+73,AG05,2,"El sistema debe permitir que la unidad afectada quede inmovilizada en su posición por el tiempo definido (2h o 4h, según el tipo).",Exigible,,James Martinez,No iniciado
+74,AG05,3,"El sistema debe permitir que, luego del periodo de inmovilización, la unidad retorne de inmediato a la planta si la avería es grave (TI2 o TI3).",Exigible,,James Martinez,No iniciado
+75,AG05,4,"El sistema debe permitir que se integre el archivo averias.txt para simular incidentes en escenarios de 7 días.",Exigible,,Matias Sulca,No iniciado
+76,AG05,5,"El sistema debe permitir que la interfaz de monitoreo muestre un camión “averiado” con un ícono/estado específico.",Exigible,,Matias Sulca,No iniciado
+77,AG05,6,"El sistema debe permitir que la planificación se actualice ante una avería para reasignar pedidos si es posible.",Exigible,,Jeremy López,No iniciado
+78,AG06,1,"El sistema debe permitir que los tramos/nodos bloqueados se inhabiliten en el grafo de la ciudad durante el periodo indicado.",Exigible,,Saymon Nicho,No iniciado
+79,AG06,2,"El sistema debe permitir que se calculen rutas alternativas que eviten dichos nodos bloqueados.",Exigible,,Saymon Nicho,No iniciado
+80,AG06,3,"El sistema debe permitir que se alerte al planificador cuando no exista ruta alternativa por bloqueos.",Exigible,,Saymon Nicho,No iniciado
+81,AG06,4,"El sistema debe permitir que se descargue un reporte de los bloqueos aplicados y su duración.",Exigible,,Saymon Nicho,No iniciado
+82,AG06,5,"El sistema debe permitir que ...",Exigible,,Saymon Nicho,No iniciado
+83,AG07,1,"El sistema debe permitir que se ejecute la “operación día a día” con seguimiento en tiempo real.",Exigible,,Jeremy López,No iniciado
+84,AG07,2,"El sistema debe permitir que se ejecute la “simulación semanal” con un tiempo de ejecución de no mayor a una hora",Deseable,,Jeremy López,No iniciado
+85,AG07,3,"El sistema debe permitir que se ejecute la “simulación hasta el colapso” para identificar el punto en que las operaciones se vuelven insostenibles.",Exigible,,Jeremy López,No iniciado
+86,AG07,4,"El sistema debe permitir que el usuario ajuste parámetros como velocidad de simulación o densidad de pedidos en cada escenario.",Exigible,,Jeremy López,No iniciado
+87,AG07,5,"El sistema debe permitir que se genere un archivo log con los eventos relevantes de la simulación (asignaciones, averías, etc.).",Deseable,,Jeremy López,No iniciado
+88,AG07,6,"El sistema debe permitir que se muestren métricas clave (consumo total, pedidos cumplidos, tiempo promedio de entrega) al finalizar cada escenario.",Exigible,,Jeremy López,No iniciado
+89,AG08,1,"El sistema debe permitir que se generen reportes en PDF/Excel con el resumen de entregas diarias.",Exigible,,James Martinez,No iniciado
+90,AG08,2,"El sistema debe permitir que se incluyan gráficos de uso de la flota en los reportes.",Exigible,,James Martinez,No iniciado
+91,AG08,3,"El sistema debe permitir que se programen envíos automáticos de reportes por correo.",Deseable,,Matias Sulca,No iniciado
+92,AG08,4,"El sistema debe permitir que se presente un panel con KPIs (tiempos promedio de entrega, consumo, averías, etc.).",Exigible,,Matias Sulca,No iniciado
+93,AG08,5,"El sistema debe permitir que se reporten los pedidos incumplidos junto con la causa (falta de camión, bloqueo, etc.).",Exigible,,Matias Sulca,No iniciado
+94,AG08,6,"El sistema debe permitir que se generen estadísticas de uso de los camiones, incluyendo consumo de combustible y kilómetros recorridos.",Exigible,,Jeremy López,No iniciado
+95,AG08,7,"El sistema debe permitir que se generen reportes sobre la eficiencia y desempeño de los pedidos, comparando el tiempo solicitado versus el tiempo de entrega.",Deseable,,Jeremy López,No iniciado
+96,AG08,8,"El sistema debe permitir que se generen reportes sobre eficiencia y consumo de combustible (pueden ser parte de los KPIs).",Exigible,,Matias Sulca,No iniciado
+97,AG08,9,"El sistema debe permitir que se generen reportes sobre las averías ocurridas, incluidas su tipo, camión afectado tiempo de inmovilización del vehículo, etc.",Exigible,,Jeremy López,No iniciado
+98,AG08,10,"El sistema generará reportes de tipo PDF y/o Excel con el historial de los pedidos hechos y los detalles de entrega según el cliente.",Exigible,,Jeremy López,No iniciado
+99,AG08,11,"El sistema permitirá generar estadísticas de uso de los tanques intermedios, como las horas de mayor uso, tanque más usado, etc.",Deseable,,Jeremy López,No iniciado
+100,AG08,12,"El sistema generará reportes de tipo PDF y/o Excel con el log de los eventos ocurridos al finalizar la simulación.",Deseable,,Jeremy López,No iniciado

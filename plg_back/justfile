@@ -1,0 +1,35 @@
+# justfile
+
+# help recipe
+help:
+    @echo "Available recipes:"
+    @echo "  clean  - Clean build artifacts"
+    @echo "  build  - Build the project"
+    @echo "  run    - Clean, build, and run the application"
+    @echo "  dev    - Run in development mode (bootRun only)"
+    @echo "  test   - Run tests"
+    @echo "  help   - Show this help"
+
+# clean recipe
+clean:
+    ./gradlew clean
+
+# build recipe
+build:
+    ./gradlew build
+
+# run recipe: depends on clean and build
+run: clean build
+    ./gradlew bootRun
+
+# run the server on port ????
+run-server:
+    java -jar build/libs/plg_back-0.0.1-SNAPSHOT.jar
+
+# dev recipe
+dev:
+    ./gradlew bootRun
+
+# test recipe
+test:
+    ./gradlew test

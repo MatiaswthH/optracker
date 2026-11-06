@@ -1,0 +1,11 @@
+# Local development database. Values come from a .env file (see .env.example).
+services:
+  mysql:
+    image: 'mysql:8'
+    environment:
+      - 'MYSQL_DATABASE=${DB_NAME}'
+      - 'MYSQL_USER=${DB_USERNAME}'
+      - 'MYSQL_PASSWORD=${DB_PASSWORD}'
+      - 'MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}'
+    ports:
+      - '3306:3306'
